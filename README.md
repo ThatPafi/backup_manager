@@ -28,3 +28,9 @@ options:
   --dry-run    Perform a dry run (no changes made)
 
 ```
+
+## Exemples  
+Using [command output widget](https://github.com/Zren/plasma-applet-commandoutput/tree/master):  
+On timer : ```sh -c '/usr/local/bin/backup_checker.py -x 7'``` (check if backup is older than a week)  
+On Hover :  ```echo -e "Click on widget to backup:  \nSOURCE \nto \nDESTINATION"```  
+On Click : ```sh -c "konsole --hold -e rsync_backup_manager.py SOURCE DESTINATION"``` (opens new terminal to check view rsync progress or error - replace ```konsole``` with your terminal)  

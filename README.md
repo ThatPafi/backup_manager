@@ -36,29 +36,19 @@ On timer : ```sh -c '/usr/local/bin/backup_checker.py -x 7'``` (check if backup 
 On Hover :  ```echo -e "Click on widget to backup:  \nSOURCE \nto \nDESTINATION"```  
 On Click : ```sh -c "konsole --hold -e rsync_backup_manager.py SOURCE DESTINATION"``` (opens new terminal to check view rsync progress or error - replace ```konsole``` with your terminal)  
 
-I am looking into a possible issue with this widget.  
+I am looking into a possible issue with this widget (well, more like a feature than a bug). 
   
-You might need to modify the [widget](https://github.com/Zren/plasma-applet-commandoutput/tree/master) to ensure the command is run when the widget is loaded:  
-in ```/contents/ui/main.qml``` by default Timer {} triggers the timer to ensure the command is executed at load time:  
+I modified this [widget](https://github.com/Zren/plasma-applet-commandoutput/tree/master) to ensure the command is run when the widget is loaded.  
+In ```/contents/ui/main.qml``` by default ```Timer {}``` triggers the timer to ensure the command is executed at load time:  
 ```
 Component.onCompleted: {
 	// Run right away in case the interval is very long.
 	triggered()
 ```    
-However with very long timers (days) there might be an issue with the timer not being started correctly.  
-In which case running the following should fix the issue :  
+I modified it for better clarity and to ensure runCommand() runs at least once in every scenario.
 ```
 Component.onCompleted: {
 	widget.runCommand()  // Always run once
-	if (config.interval > 0) {
-		start()          // Only start timer if valid interval
-}
-```
-
-Or if you want to keep the triggered command (since ```onTriggered: widget.runCommand()```:  
-```
-Component.onCompleted: {
-	triggered()
 	if (config.interval > 0) {
 		start()          // Only start timer if valid interval
 }

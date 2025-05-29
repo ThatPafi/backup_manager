@@ -47,8 +47,8 @@ def append_to_log(source, dest, stats_output):
 
 def main():
     parser = argparse.ArgumentParser(description="Rsync backup script with stats logging.")
-    parser.add_argument("SOURCE", help="Source folder to back up")
-    parser.add_argument("DESTINATION", help="Destination folder")
+    parser.add_argument("source", help="Source folder to back up")
+    parser.add_argument("dest", help="Destination folder")
     parser.add_argument("--dry-run", action="store_true", help="Perform a dry run (no changes made)")
 
     args = parser.parse_args()

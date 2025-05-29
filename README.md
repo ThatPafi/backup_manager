@@ -15,13 +15,13 @@ create backup by running ```rsync_backup_manager.py [SOURCE_PATH] [DESTINATION_P
 By default runs ```rsync -a --delete``` and logs backup timestamp, source, destination, and ```rsync --stats``` to ```~/.local/state/backup.log``` (careful of log size).  
 
 ```
-usage: rsync_backup_manager.py [-h] [--dry-run] SOURCE DESTINATION
+usage: rsync_backup_manager.py [-h] [--dry-run] source dest
 
 Rsync backup script with stats logging.
 
 positional arguments:
-  SOURCE       Source folder to back up
-  DESTINATION  Destination folder
+  source       Source folder to back up
+  dest  Destination folder
 
 options:
   -h, --help   show this help message and exit

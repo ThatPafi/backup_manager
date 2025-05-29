@@ -12,7 +12,7 @@ KDE Plasma 6.3.5 - Wayland
 create backup by running ```rsync_backup_manager.py [SOURCE_PATH] [DESTINATION_PATH]```  
 
   
-By default runs ```rsync -a --delete``` and logs backup timestamp, source, destination, and ```rsync --stats``` to ```~/.config/backup.log``` (careful of log size).  
+By default runs ```rsync -a --delete``` and logs backup timestamp, source, destination, and ```rsync --stats``` to ```~/.local/state/backup.log``` (careful of log size).  
 
 ```
 usage: rsync_backup_manager.py [-h] [--dry-run] SOURCE DESTINATION

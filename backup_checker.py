@@ -15,7 +15,7 @@ def main():
     parser.add_argument("-x", "--max-age", type=int, help="Warn if last backup was X or more days ago")
     args = parser.parse_args()
 
-    log_file = Path.home() / ".config/backup_script/backup.log"
+    log_file = Path.home() / ".local/state/backup.log"
     if not log_file.exists():
         print("❌ No backup log found.")
         return

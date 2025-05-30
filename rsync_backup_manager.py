@@ -32,7 +32,7 @@ def run_rsync(source_folder, dest_folder, dry_run=False):
         return False
 
 def append_to_log(source, dest, stats_output):
-    log_file = Path("~/.local/state/backup.log")
+    log_file = Path("~/.local/state/backup.log").expanduser()
     log_file.parent.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with log_file.open("a") as f:
